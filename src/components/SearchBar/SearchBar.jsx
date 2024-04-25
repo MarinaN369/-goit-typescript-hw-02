@@ -1,10 +1,11 @@
 import { useState } from "react";
 import css from "./SearchBar.module.css";
+import {Toaster} from "toaster";
 import { showError } from "../../services/toaster";
 
 const SearchBar = ({onSubmit}) =>  { const [theme, setTheme] = useState("");
 
-handleSubmit = (e) => {
+ const handleSubmit = (e) => {
     e.preventDefault();
     if(theme.trim()==="") {
     showError ("Please fill out the form");
@@ -13,21 +14,22 @@ return;
     onSubmit(theme);
     console.log(theme); };
 
- handleChange = (e) => {setTheme(e.target.value)};   
+ const handleChange = (e) => {setTheme(e.target.value)};   
     
     return (
- <header className={css.header-search}>
-    <form сlassName={css.form-search} onSubmit={handleSubmit}>
-      <input className={css.input-search}
+ <header className={css.headerSearch}>
+    <form className={css.formSearch} onSubmit={handleSubmit}>
+      <input className={css.inputSearch}
         type="text"
         name="theme"
         value={theme}
         onChange={handleChange}
-        autocomplete="off"
-        autofocus
+        autoComplete="off"
+        autoFocus
         placeholder="Search images and photos"
       />
-      <button className={css.btn-search} type="submit">Search</button>
+      <Toaster />
+      <button className={css.btnSearch} type="submit">Search</button>
     </form>
   </header>);
 };

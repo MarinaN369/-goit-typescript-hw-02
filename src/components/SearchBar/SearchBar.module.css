@@ -1,11 +1,11 @@
-.header-search {
+.header-Search {
     background-color: aqua;
 }
-.form-search{
+.formSearch{
     display: flex;
     align-items: center;
 }
-.input-search {
+.inputSearch {
     padding: 10px;
       border: 2px solid #ccc; 
       border-radius: 5px;
@@ -13,11 +13,11 @@
       flex: 1;
       margin-right: 10px;
     }
-    .input-search:focus {
+    .inputSearch:focus {
         outline: none;
       border-color: #7b68ee;
     }
-    .btn-search {
+    .btnSearch {
         padding: 10px 20px;
       background-color: #7b68ee; 
       color: #fff; 
@@ -26,6 +26,6 @@
       font-size: 16px;
       cursor: pointer;
     }
-    .btn-search:hover {
+    .btnSearch:hover {
         background-color: #563d7c;
     }
