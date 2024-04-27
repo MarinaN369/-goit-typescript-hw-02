@@ -1,6 +1,6 @@
 import { useState } from "react";
 import css from "./SearchBar.module.css";
-import {Toaster} from "toaster";
+import {Toaster} from "react-hot-toast";
 import { showError } from "../../services/toaster";
 
 const SearchBar = ({onSubmit}) =>  { const [theme, setTheme] = useState("");

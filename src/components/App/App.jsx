@@ -1,5 +1,6 @@
 import SearchBar from "../SearchBar/SearchBar";
 import css from "./App.module.css";
+// import { requestImagesQuery } from "./services/api";
 
 
 

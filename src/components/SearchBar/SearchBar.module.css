@@ -1,17 +1,25 @@
 .headerSearch {
-    background-color: aqua;
+    background-color: aqua ;
+    display: flex;
+  justify-content: center;
+  align-items: center;
+  justify-content: space-evenly;
+  padding: 10px;
+  border-radius: 10px;
+  width: 100%;
+
 }
 .formSearch{
     display: flex;
     align-items: center;
+    gap: 20px;
 }
-.inputSearch {
-    padding: 10px;
-      border: 2px solid #ccc; 
+
+    .inputSearch {
+      width: 400px;
+      height: 35px;
+      margin-left: 15px;
       border-radius: 5px;
-      font-size: 16px;
-      flex: 1;
-      margin-right: 10px;
     }
     .inputSearch:focus {
         outline: none;
