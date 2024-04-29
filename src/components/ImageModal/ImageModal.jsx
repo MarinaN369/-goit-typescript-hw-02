@@ -21,12 +21,12 @@ const ImageModal = ({image, isOpen, onClose}) => {if(!image) { return null} retu
     <Modal
     style={baseStyles}
     isOpen={isOpen}
-    onClose={onClose}
+    onRequestClose={onClose}
     className={css.imageModal}
     overlayClassName={css.overlay}
     appElement={document.getElementById("root")}
     >
-    img src ={image.urls.regular} alt = {image.alt_description}
+    <img src ={image.urls.regular} alt = {image.alt_description}/>
     </Modal>
     </div>);
     };

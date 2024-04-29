@@ -35,9 +35,9 @@ if (query.length > 0) {
 }
 }, [query, page]);
 
-const onSearchQuery = (searchQuery) => setQuery(searchQuery);
+const onSearchQuery = (searchQuery) => { setQuery(searchQuery);
 setPage(1);
-
+};
 const handleMoreImages = async () => {
   setPage((prevPage) => prevPage + 1);
 };
