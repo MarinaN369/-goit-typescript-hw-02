@@ -1,6 +1,6 @@
 import css from "./App.module.css";
 import {useState, useEffect} from "react";
-import { requestImagesQuery } from "./services/api";
+import { requestImagesQuery } from "../../services/api";
 import SearchBar from "../SearchBar/SearchBar";
 import ImageGallery from "../ImageGallery/ImageGallery";
 import ErrorMessage from "../ErrorMessage/ErrorMessage";

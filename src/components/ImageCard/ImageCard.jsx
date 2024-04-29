@@ -1,7 +1,11 @@
 import css from "./ImageCard.module.css";
 
-const ImageCard = () => { return (<div className={css.card}> 
-    <img className={css.image} src="" alt="" />
+const ImageCard = ({image, onClick}) => { const handleClick = () => {onClick(image);}; return (<div className={css.card}> 
+    <img 
+     src="image.urls.small" 
+    alt="image.alt_description"
+    onClick = {handleClick}
+    className={css.image} />
   </div>)};
 
   export default ImageCard;
