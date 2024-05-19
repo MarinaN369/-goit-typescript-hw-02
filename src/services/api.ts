@@ -21,6 +21,7 @@ interface Image {
   likes: number;
   urls: {
     small: string;
+    regular: string;
     full: string;
   };
 }
@@ -37,7 +38,8 @@ export const requestImages: ImageRequestFunction = async () => {
     return data;
   };
   
-  export const requestImagesQuery: ImageRequestFunction = async (query, page = 1) => {
+  export const requestImagesQuery: ImageRequestFunction = async (params: ImageRequestParams = {}) => {
+    const { query = "", page = 1 } = params;
     const { data }: AxiosResponse<ImageResponse>  = await axios.get(
       `${apiUrl}/search/photos?client_id=${accessKey}&query=${query}&page=${page}`
     );

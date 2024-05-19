@@ -8,6 +8,21 @@ import Loader from "../Loader/Loader";
 import ImageModal from "../ImageModal/ImageModal";
 import LoadMoreBtn from "../LoadMoreBtn/LoadMoreBtn";
 
+interface Image {
+  id: string;
+  alt_description: string;
+  description: string;
+  user: {
+    name: string;
+  };
+  likes: number;
+  urls: {
+    small: string;
+    regular: string;
+    full: string;
+  };
+}
+
 interface Modal{
   imageSrc: string;
   imageAltDescription: string;
@@ -23,7 +38,7 @@ function App() {
   const [query, setQuery] = useState<string>("");
   const [page, setPage] = useState<number>(1);
   const [modalIsOpen, setModalIsOpen] = useState<boolean>(false);
-  const [selectedImage, setSelectedImage] = useState(null);
+  const [selectedImage, setSelectedImage] = useState<Image | null>(null);
   const [modalData, setModalData] = useState<Modal>({
     imageSrc: "",
     imageAltDescription: "",
@@ -34,7 +49,7 @@ function App() {
 
     useEffect (() => { async function fetchImagesQuery(query: string, page: number): Promise<void> {try {
       setLoader(true);
-      const info = await requestImagesQuery(query);
+      const info = await requestImagesQuery({query, page});
       if(page===1) {setImages(info.results);}
     
   else {setImages((prevImages) => [...prevImages, ...info.results]);}
@@ -57,8 +72,8 @@ function App() {
   };
   
   
-  const openModal = (imageUrl: string):void => {setModalIsOpen(true);
-    setSelectedImage(imageUrl);}
+  const openModal = (image: Image):void => {setModalIsOpen(true);
+    setSelectedImage(image);}
   
     const closeModal = ():void => {
       setModalIsOpen(false);
