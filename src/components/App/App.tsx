@@ -43,7 +43,7 @@ setError(false);
 }
 
 if (query.length > 0) {
-  fetchImagesQuery();
+  fetchImagesQuery(query, page);
 } else {
   setImages(null); 
 }
