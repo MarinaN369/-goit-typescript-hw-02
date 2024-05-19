@@ -1,8 +1,28 @@
 import Modal from "react-modal";
 import css from "./ImageModal.module.css";
 
+interface Image {
+  id: string;
+  alt_description: string;
+  description: string;
+  user: {
+    name: string;
+  };
+  likes: number;
+  urls: {
+    small: string;
+    regular: string;
+    full: string;
+  };
+}
 
-const baseStyles = {
+interface ImageModalProps {
+  image: Image | null;
+  isOpen: boolean;
+  onClose: () => void;
+}
+
+const baseStyles: Modal.Styles = {
     content: {
       padding: "0",
       background: "unset",
@@ -17,7 +37,7 @@ const baseStyles = {
     },
   };
 
-const ImageModal = ({image, isOpen, onClose}) => {if(!image) { return null} return (<div>
+const ImageModal: React.FC<ImageModalProps>  = ({image, isOpen, onClose}) => {if(!image) { return null} return (<div>
     <Modal
     style={baseStyles}
     isOpen={isOpen}

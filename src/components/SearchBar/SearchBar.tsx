@@ -3,9 +3,13 @@ import css from "./SearchBar.module.css";
 import {Toaster} from "react-hot-toast";
 import { showError } from "../../services/toaster";
 
-const SearchBar = ({onSubmit}) =>  { const [theme, setTheme] = useState("");
+interface SearchBarProps {
+  onSubmit: (theme: string) => void;
+}
 
- const handleSubmit = (e) => {
+const SearchBar: React.FC<SearchBarProps> = ({onSubmit}) =>  { const [theme, setTheme] = useState("");
+
+ const handleSubmit = (e: React.FormEvent<HTMLFormElement></HTMLFormElement>) => {
     e.preventDefault();
     if(theme.trim()==="") {
     showError ("Please fill out the form");
@@ -14,7 +18,7 @@ return;
     onSubmit(theme);
     console.log(theme); };
 
- const handleChange = (e) => {setTheme(e.target.value)};   
+ const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {setTheme(e.target.value)};   
     
     return (
  <header className={css.headerSearch}>
