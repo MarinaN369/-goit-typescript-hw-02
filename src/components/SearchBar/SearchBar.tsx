@@ -9,7 +9,7 @@ interface SearchBarProps {
 
 const SearchBar: React.FC<SearchBarProps> = ({onSubmit}) =>  { const [theme, setTheme] = useState("");
 
- const handleSubmit = (e: React.FormEvent<HTMLFormElement></HTMLFormElement>) => {
+ const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if(theme.trim()==="") {
     showError ("Please fill out the form");
