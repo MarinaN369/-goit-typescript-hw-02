@@ -44,7 +44,7 @@ const ImageModal: React.FC<ImageModalProps>  = ({image, isOpen, onClose}) => {if
     onRequestClose={onClose}
     className={css.imageModal}
     overlayClassName={css.overlay}
-    appElement={document.getElementById("root")}
+    // appElement={document.getElementById("root")}
     >
     <img src ={image.urls.regular} alt = {image.alt_description}/>
     </Modal>

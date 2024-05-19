@@ -23,7 +23,7 @@ function App() {
   const [query, setQuery] = useState<string>("");
   const [page, setPage] = useState<number>(1);
   const [modalIsOpen, setModalIsOpen] = useState<boolean>(false);
-  const [selectedImage, setSelectedImage] = useState<string | null>(null);
+  const [selectedImage, setSelectedImage] = useState(null);
   const [modalData, setModalData] = useState<Modal>({
     imageSrc: "",
     imageAltDescription: "",
@@ -32,41 +32,38 @@ function App() {
     imageLikes: 0,
     });
 
-  useEffect (() => { async function fetchImagesQuery(query: string, page: number): Promise<void> {try {
-    setLoader(true);
-    const info = await requestImagesQuery(query, page);
-    if(page===1) {setImages(info.results);}
-  
-else {setImages((prevImages) => [...prevImages, ...info.results]);}
-setError(false);
-}catch (error) {setError(true);} finally {setLoader(false);}
-}
-
-if (query.length > 0) {
-  fetchImagesQuery(query, page);
-} else {
-  setImages(null); 
-}
-}, [query, page]);
-
-const onSearchQuery = (searchQuery: string):void => { setQuery(searchQuery);
-setPage(1);
-};
-const handleMoreImages = ():void => {
-  setPage((prevPage) => prevPage + 1);
-};
-
-
-const openModal = (imageUrl: string):void => {setModalIsOpen(true);
-  setSelectedImage(imageUrl);}
-
-  const closeModal = ():void => {
-    setModalIsOpen(false);
-    setSelectedImage(null);
-
-
+    useEffect (() => { async function fetchImagesQuery(query: string, page: number): Promise<void> {try {
+      setLoader(true);
+      const info = await requestImagesQuery(query);
+      if(page===1) {setImages(info.results);}
+    
+  else {setImages((prevImages) => [...prevImages, ...info.results]);}
+  setError(false);
+  }catch (error) {setError(true);} finally {setLoader(false);}
   }
-
+  
+  if (query.length > 0) {
+    fetchImagesQuery(query, page);
+  } else {
+    setImages([]); 
+  }
+  }, [query, page]);
+  
+  const onSearchQuery = (searchQuery: string):void => { setQuery(searchQuery);
+  setPage(1);
+  };
+  const handleMoreImages = ():void => {
+    setPage((prevPage) => prevPage + 1);
+  };
+  
+  
+  const openModal = (imageUrl: string):void => {setModalIsOpen(true);
+    setSelectedImage(imageUrl);}
+  
+    const closeModal = ():void => {
+      setModalIsOpen(false);
+      setSelectedImage(null);
+    }
     return (
         <div className={css.container}>
           <SearchBar onSubmit={onSearchQuery} />

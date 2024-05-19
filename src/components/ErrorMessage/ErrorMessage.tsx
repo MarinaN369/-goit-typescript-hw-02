@@ -1,5 +1,5 @@
 interface ErrorMessageProps {
-    message: string;
+    message?: string;
   }
 
 const ErrorMessage = ({message = "Something went wrong!"}: ErrorMessageProps) => {return (
